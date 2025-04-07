@@ -1,11 +1,11 @@
 ## Parte 1
 
-- [ ] isalpha
-- [ ] isdigit
-- [ ] isalnum
+- [x] isalpha
+- [x] isdigit
+- [x] isalnum
 - [ ] isascii
 - [ ] isprint
-- [ ] strlen
+- [ ] strlen - Ver a razao por tras do import da libft e a cena das consts
 - [ ] memset
 - [ ] bzero
 - [ ] memcpy
@@ -20,7 +20,7 @@
 - [ ] memchr
 - [ ] memcmp
 - [ ] strnstr
-- [ ] atoi
+- [x] atoi
 
 ### Malloc
 
