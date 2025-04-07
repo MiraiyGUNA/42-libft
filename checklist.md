@@ -3,17 +3,17 @@
 - [x] isalpha
 - [x] isdigit
 - [x] isalnum
-- [ ] isascii
-- [ ] isprint
-- [ ] strlen - Ver a razao por tras do import da libft e a cena das consts
-- [ ] memset
+- [x] isascii
+- [x] isprint
+- [x] strlen
+- [x] memset - Perceber o Codigo
 - [ ] bzero
 - [ ] memcpy
 - [ ] memmove
 - [ ] strlcpy
-- [ ] strlcat
-- [ ] toupper
-- [ ] tolower
+- [ ] strlcatin
+- [x] toupper
+- [x] tolower
 - [ ] strchr
 - [ ] strrchr
 - [ ] strncmp
