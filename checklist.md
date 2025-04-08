@@ -6,7 +6,7 @@
 - [x] isascii
 - [x] isprint
 - [x] strlen
-- [x] memset - Perceber o Codigo
+- [x] memset
 - [ ] bzero
 - [ ] memcpy
 - [ ] memmove
