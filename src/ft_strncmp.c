@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bzero.c                                            :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 18:46:49 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/07 18:51:01 by vde-maga         ###   ########.fr       */
+/*   Created: 2025/04/09 16:51:49 by vde-maga          #+#    #+#             */
+/*   Updated: 2025/04/09 16:54:25 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-void	ft_bzero(void *str, size_t n)
+int	ft_strncmp(char *str1, char *str2, size_t n)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < n)
+	while ((*str1 || *str2) && n > 0)
 	{
-		str[i] = 0;
-		i++;
+		if (*str1 != *str2)
+		{
+			return ((unsigned char)*str1 - (unsigned char) *str2);
+		}
+		str1++;
+		str2++;
+		n--;
 	}
+	return (0);
 }
+

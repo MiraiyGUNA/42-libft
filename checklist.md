@@ -8,10 +8,10 @@
 - [x] strlen
 - [x] memset
 - [x] bzero
-- [ ] memcpy
-- [ ] memmove
-- [ ] strlcpy
-- [ ] strlcatin
+- [x] memcpy
+- [x] memmove
+- [x] strlcpy
+- [x] strlcatin
 - [x] toupper
 - [x] tolower
 - [ ] strchr

@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 15:58:06 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/09 15:58:19 by vde-maga         ###   ########.fr       */
+/*   Created: 2025/04/09 15:41:46 by vde-maga          #+#    #+#             */
+/*   Updated: 2025/04/09 16:30:29 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_bzero(void *ptr, size_t n)
+char	*ft_strrchr(const char *str, int c)
 {
-	unsigned char	*str;
-	size_t			i;
+	int	i;
 
-	str = ptr;
-	i = 0;
-	while (i < n)
+	c = (unsigned char)c;
+	i = ft_strlen(str);
+	while (i >= 0)
 	{
-		str[i] = 0;
-		i++;
+		if (str[i] == c)
+		{
+			return ((char *)str + i);
+		}
+		i--;
 	}
-	return (str);
+	return (NULL);
 }
