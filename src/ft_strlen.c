@@ -6,11 +6,11 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 15:49:56 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/07 18:32:13 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/04/09 14:25:29 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h" 
 
 size_t	ft_strlen(const char *str)
 {

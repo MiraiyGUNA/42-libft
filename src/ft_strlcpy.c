@@ -1,38 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 15:17:32 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/09 11:43:48 by vde-maga         ###   ########.fr       */
+/*   Created: 2025/04/09 12:28:30 by vde-maga          #+#    #+#             */
+/*   Updated: 2025/04/09 12:59:49 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	size_t		i;
-	char		*pdest;
-	const char	*psrc;
+	size_t	i;
+	size_t	length;
 
-	pdest = dest;
-	psrc = src;
-	if (pdest == psrc)
-	{
-		return (pdest);
-	}
-	if (!dest && !src && n > 0)
-	{
-		return (NULL);
-	}
 	i = 0;
-	while (i < n)
+	length = 0;
+	while (src[length] != '\0')
 	{
-		pdest[i] = psrc[i];
+		length++;
+	}
+	if (!size)
+	{
+		return (length);
+	}
+	while (i < size - 1 && src[i])
+	{
+		dest[i] = src[i];
 		i++;
 	}
-	return (pdest);
+	if (size > i)
+	{
+		dest[i] = 0;
+	}
+	return (length);
 }

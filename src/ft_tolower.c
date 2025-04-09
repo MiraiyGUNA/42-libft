@@ -6,15 +6,15 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 18:08:34 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/07 18:10:07 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/04/09 12:41:27 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_tolower(int c)
 {
-	if (c >= 'a' && c <= 'z')
+	if (c >= 'A' && c <= 'Z')
 	{
-		return (c - 32);
+		return (c + 32);
 	}
 	else
 	{
