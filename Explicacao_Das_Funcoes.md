@@ -1,6 +1,8 @@
 # Explicacao Das Funcoes
 
-## memset
+## Parte 1
+
+### memset
 
 > Preenche um bloco de memória apontado por um pointer, até n posições, com um determinado valor
 
@@ -16,7 +18,7 @@
   1. Podiamos devolver nao so o unsigned char, como tambem devolver o proprio pointer, pois ao alterar o unsigned char, estamos a alterar tambem o pointer original
 
 
-## bzero
+### bzero
 
 > Define todos os bytes de um bloco de memória apontado por um pointer para zero.
 
@@ -31,7 +33,7 @@
 7. Retorna ptr, pois agora os bytes da memória foram modificados para zero como desejado.
    1. Podíamos devolver não só o unsigned char, como também devolver o próprio pointer, pois ao alterar o unsigned char, estamos a alterar também o pointer original.
 
-## memcpy
+### memcpy
 
 *escrito por gemma 3*
 
@@ -53,7 +55,7 @@ A função `ft_memcpy` realiza a cópia de dados entre duas áreas da memória, 
     * O índice `i` é incrementado em cada iteração para avançar para o próximo byte.
 6. **Retorno do pointer de destino:** Após completar a cópia de todos os bytes, a função retorna o pointer `pdest`, que agora aponta para o bloco de memória de destino contendo os dados copiados.  Este retorno permite que o chamador da função continue trabalhando com o bloco de memória modificado.
 
-## memmove
+### memmove
 
 *escrito por gemma 3*
 
@@ -77,7 +79,7 @@ A função `ft_memmove` é semelhante a `memcpy`, mas possui uma característica
     * **Caso 2: `dest <= src` (Sem sobreposição):** Um loop `while` itera 'n' vezes, copiando um byte por vez da origem para o destino, começando do início dos blocos de memória.
 7. **Retorno do pointer de destino:** Após completar a cópia de todos os bytes, a função retorna o pointer `pdest`, que agora aponta para o bloco de memória de destino contendo os dados copiados. Este retorno permite que o chamador da função continue trabalhando com o bloco de memória modificado.
 
-## strlcpy
+### strlcpy
 
 *escrito por gemma 3*
 
@@ -100,7 +102,7 @@ A função `ft_strlcpy` é projetada para copiar strings de forma segura, evitan
 6. **Terminação do buffer de destino:** Após o loop de cópia, a função verifica se o tamanho do buffer de destino (`size`) é maior que o número de caracteres copiados (`i`). Se for, significa que há espaço suficiente no buffer para adicionar um caractere nulo terminador. Neste caso, `dest[i]` é definido como 0 ('\0') para garantir que a string copiada seja corretamente terminada.
 7. **Retorno do comprimento da string original:** A função retorna o valor de `length`, que representa o comprimento da string original. Este valor é importante porque pode ser maior que o tamanho do buffer de destino, indicando que a string foi truncada durante a cópia.
 
-## strlcat
+### strlcat
 
 *escrito por gemma 3*
 
@@ -126,8 +128,12 @@ A função `ft_strlcat` é projetada para concatenar strings de forma segura, ev
 6. **Terminação do buffer de destino:** Após o loop de concatenação, a função adiciona um caractere nulo terminador ('\0') ao final do buffer de destino (`dest[size_dest + i] = '\0';`). Isso garante que a string concatenada seja corretamente terminada.
 7. **Retorno do comprimento total:** A função retorna a soma do comprimento da string de origem (`size_src`) e o comprimento atual do buffer de destino (`size_dest`), que representa o comprimento total da string resultante se ela puder ser completamente concatenada. Se a concatenação foi truncada devido ao tamanho limitado do buffer, este valor ainda é significativo porque indica o comprimento total da string resultante sem truncamento.
 
-## Calloc
+### Calloc
 
 > Aloca memoria no sistema e inicializa essa memoria com 0
 
+## Parte 2
 
+### Strtrim
+
+> TRoca os Espacos em Branco de um array `char const *s1`, por um caracter especifico `*set`
