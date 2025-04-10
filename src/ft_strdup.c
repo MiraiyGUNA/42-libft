@@ -1,28 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 16:51:49 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/10 11:16:17 by vde-maga         ###   ########.fr       */
+/*   Created: 2025/04/10 11:49:17 by vde-maga          #+#    #+#             */
+/*   Updated: 2025/04/10 11:50:33 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(char *str1, char *str2, size_t n)
+char	*ft_strdup(char *src)
 {
-	while ((*str1 || *str2) && n > 0)
+	char	*dest;
+	int		i;
+	int		lenght;
+
+	lenght = 0;
+	while (src[lenght] != '\0')
 	{
-		if (*str1 != *str2)
-		{
-			return ((unsigned char)*str1 - (unsigned char) *str2);
-		}
-		str1++;
-		str2++;
-		n--;
+		lenght++;
 	}
-	return (0);
+	dest = (char *) malloc(sizeof(char) * (lenght + 1));
+	if (dest == NULL)
+	{
+		return (NULL);
+	}
+	i = 0;
+	while (i < lenght)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }

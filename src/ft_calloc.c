@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 16:51:49 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/10 11:16:17 by vde-maga         ###   ########.fr       */
+/*   Created: 2025/04/10 11:28:14 by vde-maga          #+#    #+#             */
+/*   Updated: 2025/04/10 11:44:01 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(char *str1, char *str2, size_t n)
+void	*ft_calloc(size_t num, size_t size)
 {
-	while ((*str1 || *str2) && n > 0)
+	size_t	result;
+	void	*p;
+
+	result = num * size;
+	p = malloc(result);
+	if (!p)
 	{
-		if (*str1 != *str2)
-		{
-			return ((unsigned char)*str1 - (unsigned char) *str2);
-		}
-		str1++;
-		str2++;
-		n--;
+		return (NULL);
 	}
-	return (0);
+	ft_memset(p, 0, result);
+	return (p);
 }

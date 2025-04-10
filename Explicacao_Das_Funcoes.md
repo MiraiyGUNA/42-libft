@@ -125,3 +125,9 @@ A função `ft_strlcat` é projetada para concatenar strings de forma segura, ev
     * A soma do comprimento atual do buffer de destino (`size_dest`) e o índice `i` seja igual ou maior que `size - 1`. Esta condição garante que no máximo `size - 1` caracteres da string de origem sejam copiados para o buffer de destino, deixando espaço para o caractere nulo terminador.
 6. **Terminação do buffer de destino:** Após o loop de concatenação, a função adiciona um caractere nulo terminador ('\0') ao final do buffer de destino (`dest[size_dest + i] = '\0';`). Isso garante que a string concatenada seja corretamente terminada.
 7. **Retorno do comprimento total:** A função retorna a soma do comprimento da string de origem (`size_src`) e o comprimento atual do buffer de destino (`size_dest`), que representa o comprimento total da string resultante se ela puder ser completamente concatenada. Se a concatenação foi truncada devido ao tamanho limitado do buffer, este valor ainda é significativo porque indica o comprimento total da string resultante sem truncamento.
+
+## Calloc
+
+> Aloca memoria no sistema e inicializa essa memoria com 0
+
+
