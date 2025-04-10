@@ -14,18 +14,18 @@
 - [x] strlcatin
 - [x] toupper
 - [x] tolower
-- [ ] strchr
-- [ ] strrchr
-- [ ] strncmp
-- [ ] memchr
-- [ ] memcmp
-- [ ] strnstr
+- [x] strchr
+- [x] strrchr
+- [x] strncmp
+- [x] memchr
+- [x] memcmp
+- [x] strnstr
 - [x] atoi
 
 ### Malloc
 
-- [ ] calloc
-- [ ] strdup
+- [x] calloc
+- [x] strdup
 
 ## Parte 2
 

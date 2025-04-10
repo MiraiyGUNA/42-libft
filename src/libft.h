@@ -6,7 +6,7 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:42:50 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/10 11:49:44 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/04/10 13:22:03 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <limits.h>
 
+/* PARTE 1 */
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);
@@ -37,6 +38,10 @@ void	*ft_memchr(const void *str, int c, size_t n);
 int		ft_memcmp(const void *str1, const void *str2, size_t n);
 char	*ft_strnstr(const char *big, const char *little, size_t n);
 int		ft_atoi(const char *str);
+/* PARTE 1 - Malloc */
 void	*ft_calloc(size_t num, size_t size);
 char	*ft_strdup(char *src);
+/* PARTE 2 */
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
 #endif
