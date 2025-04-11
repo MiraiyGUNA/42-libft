@@ -6,11 +6,12 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 11:19:13 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/11 15:24:40 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/04/11 18:53:05 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 //#include <stdio.h>
 
 char	*ft_strnstr(const char *big, const char *little, size_t n)
@@ -50,13 +51,14 @@ size_t	ft_strlen(const char *str)
 }
 int	main(void)
 {
-	const char	big[] = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+	const char	big[] = "Lorem ipsum dolor sit amet,
+			consectetur adipiscing elit.";
 	const char	little[] = "sit";
 	char		*result;
 	char		empty[] = "";
+	size_t		n;
 
-	size_t n = 20;
-
+	n = 20;
 	result = ft_strnstr(big, little, n);
 	if (result)
 	{
@@ -67,7 +69,6 @@ int	main(void)
 		printf("Substring '%s' não encontrada nos primeiros %zu caracteres.\n",
 			little, n);
 	}
-
 	result = ft_strnstr(big, empty, n);
 	if (result)
 	{

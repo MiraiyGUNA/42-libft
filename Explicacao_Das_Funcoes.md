@@ -137,3 +137,200 @@ A função `ft_strlcat` é projetada para concatenar strings de forma segura, ev
 ### Strtrim
 
 > TRoca os Espacos em Branco de um array `char const *s1`, por um caracter especifico `*set`
+
+### Split
+
+Vamos destrinchar esse código em C que implementa uma função de _split_ de string, similar à função `split` que você pode encontrar em outras linguagens. Em resumo, a função `ft_split` divide uma string `s` em várias substrings (palavras) usando o caractere `c` como delimitador. Cada substring é copiada para uma nova área de memória alocada dinamicamente, e todas elas são armazenadas em um array de ponteiros que termina com um ponteiro `NULL`.
+
+A seguir, uma explicação detalhada de cada parte do código:
+
+---
+
+#### 1. Contando as Substrings: `total_strings`
+
+```c
+static int	total_strings(char const *s, char c)
+{
+    int	i;
+    int	count;
+
+    if (!s)
+        return (0);
+    count = 0;
+    i = 0;
+    while (s[i])
+    {
+        while (s[i] && (s[i] == c))
+            i++;
+        if (s[i])
+            count++;
+        while (s[i] && !(s[i] == c))
+            i++;
+    }
+    return (count);
+}
+```
+
+- **Objetivo:**  
+  Determinar quantas substrings (palavras) existem na string `s`, considerando que os delimitadores são caracteres iguais a `c`.
+
+- **Como funciona:**  
+  1. Se a string `s` for `NULL`, a função retorna 0, evitando processamento inválido.
+  2. Usa um laço `while` para percorrer cada caractere da string:
+     - **Primeiro**, pula todos os caracteres que são iguais a `c` (os delimitadores).
+     - **Depois**, se encontrar um caractere diferente (ou seja, o início de uma nova palavra), incrementa o contador `count`.
+     - Em seguida, continua percorrendo a sequência até encontrar novamente o delimitador, efetivamente pulando toda a palavra.
+  3. Ao final, retorna o número total de palavras encontradas.
+
+Este número é usado para alocar dinamicamente o array de ponteiros que armazenará cada palavra.
+
+---
+
+#### 2. Determinando o Comprimento de uma Palavra: `sep_len`
+
+```c
+static int	sep_len(char const *s, char c)
+{
+    int	i;
+
+    i = 0;
+    while (s[i] && !(s[i] == c))
+        i++;
+    return (i);
+}
+```
+
+- **Objetivo:**  
+  Calcular o comprimento da palavra que começa em `s`, ou seja, contar quantos caracteres existem até encontrar o delimitador `c` ou o fim da string.
+
+- **Como funciona:**  
+  Inicia um contador `i` e incrementa enquanto o caractere atual não for o delimitador e não for o caractere nulo (`\0`), retornando a quantidade de caracteres lidos.
+
+---
+
+#### 3. Extraindo e Alocando uma Palavra: `ft_word`
+
+```c
+static char	*ft_word(char const *s, char c)
+{
+    int		len_word;
+    int		i;
+    char	*word;
+
+    i = 0;
+    len_word = sep_len(s, c);
+    word = (char *)malloc(sizeof(char) * (len_word + 1));
+    if (!word)
+        return (NULL);
+    while (i < len_word)
+    {
+        word[i] = s[i];
+        i++;
+    }
+    word[i] = '\0';
+    return (word);
+}
+```
+
+- **Objetivo:**  
+  Criar uma nova string contendo uma cópia da palavra que começa em `s`, delimitada por `c`.
+
+- **Como funciona:**  
+  1. Calcula o comprimento da palavra usando `sep_len`.
+  2. Aloca memória para a nova string com espaço para o caractere nulo (`'\0'`) final.
+  3. Copia os caracteres correspondentes da palavra para o novo espaço.
+  4. Adiciona o terminador nulo e retorna o ponteiro para a palavra recém-criada.
+
+Caso a alocação falhe, retorna `NULL`.
+
+---
+
+#### 4. Tratamento de Erros: `free_memory`
+
+```c
+static void	*free_memory(char **strings, int i)
+{
+    while (i-- > 0)
+        free(strings[i]);
+    free(strings);
+    return (NULL);
+}
+```
+
+- **Objetivo:**  
+  Em caso de falha na alocação de alguma palavra (ou seja, se `ft_word` retornar `NULL`), essa função libera toda a memória já alocada para evitar vazamentos.
+
+- **Como funciona:**  
+  1. Faz um laço para liberar cada palavra que foi alocada até aquele ponto.
+  2. Libera o array de ponteiros `strings` e retorna `NULL` para sinalizar o erro.
+
+---
+
+#### 5. Função Principal: `ft_split`
+
+```c
+char	**ft_split(char const *s, char c)
+{
+    char	**strings;
+    int		i;
+
+    if (!s)
+        return (NULL);
+    i = 0;
+    strings = (char **)malloc(sizeof(char *) * (total_strings(s, c) + 1));
+    if (!strings)
+        return (NULL);
+    while (*s)
+    {
+        if (*s != c)
+        {
+            strings[i] = ft_word(s, c);
+            if (strings[i++] == NULL)
+                return (free_memory(strings, i));
+            s += sep_len(s, c);
+        }
+        if (*s)
+            s++;
+    }
+    strings[i] = NULL;
+    return (strings);
+}
+```
+
+- **Objetivo:**  
+  Dividir a string `s` em um array de substrings usando o caractere `c` como delimitador.
+
+- **Como funciona:**  
+  1. **Validação Inicial:**  
+     Se `s` for `NULL`, retorna `NULL`.  
+  2. **Alocação do Array:**  
+     Chama `total_strings` para determinar quantos ponteiros serão necessários.  
+     Aloca memória para um array de ponteiros do tipo `char *` com tamanho igual ao número de palavras + 1 (o último elemento é `NULL` para marcar o fim do array).
+  3. **Processamento da String:**  
+     Percorre a string `s` enquanto não chega ao fim:
+     - Se o caractere corrente não for o delimitador, significa que você encontrou uma palavra.  
+       - Chama `ft_word` para extrair a palavra e armazena-a no array.
+       - Incrementa o índice `i` do array.
+       - Avança o ponteiro `s` usando `sep_len` para pular a palavra já processada.
+     - Se estiver num delimitador, simplesmente avança o ponteiro `s` para continuar a busca.
+  4. **Finalização:**  
+     Após o loop, o último elemento do array é definido como `NULL`, permitindo que o usuário saiba onde termina a lista de palavras.
+  5. **Retorno:**  
+     Retorna o array de ponteiros para as palavras extraídas.
+
+Em resumo, a função `ft_split` faz uma análise completa da string, ignorando os delimitadores consecutivos, extraindo as palavras e garantindo que a memória seja manipulada corretamente, inclusive tratando possíveis erros de alocação.
+
+---
+
+#### Informações Adicionais
+
+- **Uso Comum:**  
+  Essa implementação é típica em projetos que fazem parte da "libft", uma biblioteca de funções que muitos estudantes do 42 School e outros projetos em C utilizam como base para aprender sobre manipulação de strings e gerenciamento de memória.
+
+- **Segurança e Robustez:**  
+  Cada alocação é verificada para evitar problemas em caso de falha, e há uma função dedicada (`free_memory`) para limpar o que já foi alocado, demonstrando boas práticas em gerenciamento de memória em C.
+
+- **Possíveis Melhorias:**  
+  Em um ambiente de produção, seria interessante tratar não apenas a alocação de memória, mas também possíveis inputs inesperados, melhorando a portabilidade e a robustez do código.
+
+Se você quiser explorar mais sobre manipulação de strings, técnicas de gerenciamento de memória em C ou implementar funções semelhantes em outros contextos, posso detalhar outros exemplos. Que tal discutir como implementar funções de alto desempenho para grandes arquivos ou explorar padrões de design para bibliotecas utilitárias?
