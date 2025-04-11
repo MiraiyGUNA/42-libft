@@ -6,17 +6,15 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:42:50 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/10 16:58:25 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/04/11 15:01:58 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stddef.h>
-# include <stdlib.h>
 # include <limits.h>
-# include <stdio.h>
-
+# include <stdlib.h>
 /* PARTE 1 */
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);

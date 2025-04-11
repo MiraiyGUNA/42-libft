@@ -6,7 +6,7 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:28:30 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/10 11:17:41 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/04/11 15:15:51 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,37 +34,37 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 	return (length);
 }
 /*
-int main(void)
+size_t	ft_strlen(const char *str)
 {
-    // Teste 1: size é 0
-    char dest1[20];
-    size_t len1 = ft_strlcpy(dest1, "hello", 0);
-    printf("Teste 1 (size = 0): len = %zu, dest = '%s'\n", len1, dest1);
+	size_t	i;
 
-    // Teste 2: size é menor que o tamanho da string src
-    char dest2[5];
-    size_t len2 = ft_strlcpy(dest2, "hello", 5);
-    printf("Teste 2 (size < strlen): len = %zu, dest = '%s'\n", len2, dest2);
+	i = 0;
+	while (str[i])
+	{
+		i++;
+	}
+	return (i);
+}
 
-    // Teste 3: size é igual ao tamanho da string src
-    char dest3[6];
-    size_t len3 = ft_strlcpy(dest3, "hello", 6);
-    printf("Teste 3 (size == strlen): len = %zu, dest = '%s'\n", len3, dest3);
+int	main(void)
+{
+	const char	src[] = "High And Low";
+	size_t		result;
+	char		small_dest[5];
+	size_t		small_size;
 
-    // Teste 4: size é maior que o tamanho da string src
-    char dest4[10];
-    size_t len4 = ft_strlcpy(dest4, "hello", 10);
-    printf("Teste 4 (size > strlen): len = %zu, dest = '%s'\n", len4, dest4);
+	char dest[20];
+	size_t size = sizeof(dest); 
 
-    // Teste 5: src é uma string vazia
-    char dest5[20];
-    size_t len5 = ft_strlcpy(dest5, "", 10);
-    printf("Teste 5 (src vazia): len = %zu, dest = '%s'\n", len5, dest5);
+	result = ft_strlcpy(dest, src, size);
+	printf("Fonte: %s\n", src);
+	printf("Destino (após ft_strlcpy): %s\n", dest);
+	printf("Comprimento da fonte: %zu\n", result);
 
-    // Teste 6: Dest é NULL (comportamento indefinido, mas testamos para ver o que acontece)
-    // char *dest6 = NULL;
-    // size_t len6 = ft_strlcpy(dest6, "hello", 10); // Isso provavelmente vai causar um crash
-
-    return 0;
+	small_size = sizeof(small_dest);
+	result = ft_strlcpy(small_dest, src, small_size);
+	printf("\nDestino com buffer pequeno: %s\n", small_dest);
+	printf("Comprimento total esperado: %zu\n", result);
+	return (0);
 }
 */

@@ -6,7 +6,7 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 14:53:33 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/10 15:16:38 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/04/11 15:46:17 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,80 +27,108 @@ char	*ft_strtrim(char const *s1, char const *set)
 	return (ft_substr(s1, 0, i));
 }
 /*
-int main(void)
+char	*ft_strchr(const char *str, int c)
 {
-    // Teste 1: String vazia
-    char *result1 = ft_strtrim("", "abc");
-    if (result1 == NULL)
-        printf("Teste 1 (String vazia): Passado\n");
-    else {
-        printf("Teste 1 (String vazia): Falhou, obtido: %s\n", result1);
-        free(result1); // Importante liberar a memória alocada por ft_substr
-    }
+	int	i;
 
-    // Teste 2: String sem caracteres a serem removidos
-    char *result2 = ft_strtrim("banana", "abc");
-    if (strcmp(result2, "banana") == 0)
-        printf("Teste 2 (Sem remoção): Passado\n");
-    else {
-        printf("Teste 2 (Sem remoção): Falhou, esperado: banana, obtido: %s\n", result2);
-        free(result2); // Importante liberar a memória alocada por ft_substr
-    }
+	c = (unsigned char)c;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == c)
+		{
+			return ((char *)&str[i]);
+		}
+		i++;
+	}
+	if (c == '\0')
+	{
+		return ((char *)&str[i]);
+	}
+	return (NULL);
+}
 
-    // Teste 3: String com caracteres a serem removidos no início e fim
-    char *result3 = ft_strtrim("  banana  ", " ");
-    if (strcmp(result3, "banana") == 0)
-        printf("Teste 3 (Início e Fim): Passado\n");
-    else {
-        printf("Teste 3 (Início e Fim): Falhou, esperado: banana, obtido: %s\n", result3);
-        free(result3); // Importante liberar a memória alocada por ft_substr
-    }
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
 
-    // Teste 4: String com caracteres a serem removidos apenas no início
-    char *result4 = ft_strtrim("   banana", " ");
-    if (strcmp(result4, "banana") == 0)
-        printf("Teste 4 (Apenas Início): Passado\n");
-    else {
-        printf("Teste 4 (Apenas Início): Falhou, esperado: banana, obtido: %s\n", result4);
-        free(result4); // Importante liberar a memória alocada por ft_substr
-    }
+	i = 0;
+	while (str[i])
+	{
+		i++;
+	}
+	return (i);
+}
 
-    // Teste 5: String com caracteres a serem removidos apenas no fim
-    char *result5 = ft_strtrim("banana   ", " ");
-    if (strcmp(result5, "banana") == 0)
-        printf("Teste 5 (Apenas Fim): Passado\n");
-    else {
-        printf("Teste 5 (Apenas Fim): Falhou, esperado: banana, obtido: %s\n", result5);
-        free(result5); // Importante liberar a memória alocada por ft_substr
-    }
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*dest;
+	size_t	str_size;
 
-    // Teste 6: String com múltiplos caracteres para remover
-    char *result6 = ft_strtrim("abcbananaabc", "abc");
-    if (strcmp(result6, "banana") == 0)
-        printf("Teste 6 (Múltiplos Caracteres): Passado\n");
-    else {
-        printf("Teste 6 (Múltiplos Caracteres): Falhou, esperado: banana, obtido: %s\n", result6);
-        free(result6); // Importante liberar a memória alocada por ft_substr
-    }
+	if (!s)
+		return (NULL);
+	str_size = ft_strlen(s);
+	if (str_size < start)
+	{
+		dest = (char *)malloc(sizeof(char) * 1);
+		if (!dest)
+			return (NULL);
+		dest[0] = '\0';
+		return (dest);
+	}
+	if (len > str_size - start)
+		len = str_size - start;
+	dest = (char *)malloc(sizeof(char) * (len + 1));
+	if (!dest)
+		return (NULL);
+	ft_memcpy(dest, s + start, len);
+	dest[len] = '\0';
+	return (dest);
+}
 
-    // Teste 7: String com caracteres para remover que não estão na string
-    char *result7 = ft_strtrim("banana", "xyz");
-    if (strcmp(result7, "banana") == 0)
-        printf("Teste 7 (Caracteres inexistentes): Passado\n");
-    else {
-        printf("Teste 7 (Caracteres inexistentes): Falhou, esperado: banana, obtido: %s\n", result7);
-        free(result7); // Importante liberar a memória alocada por ft_substr
-    }
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	size_t		i;
+	char		*pdest;
+	const char	*psrc;
 
-    // Teste 8: set é NULL
-    char *result8 = ft_strtrim("banana", NULL);
-    if (result8 == NULL) {
-        printf("Teste 8 (set NULL): Passado\n");
-    } else {
-        printf("Teste 8 (set NULL): Falhou, obtido: %s\n", result8);
-        free(result8); // Importante liberar a memória alocada por ft_substr
-    }
+	pdest = dest;
+	psrc = src;
+	if (pdest == psrc)
+	{
+		return (pdest);
+	}
+	if (!dest && !src && n > 0)
+	{
+		return (NULL);
+	}
+	i = 0;
+	while (i < n)
+	{
+		pdest[i] = psrc[i];
+		i++;
+	}
+	return (pdest);
+}
 
-    return 0;
+int	main(void)
+{
+	const char	s1[] = "*************Papa*Pitufo****EPitufina*****SonPitufos";
+	const char	set[] = "*";
+	char		*trimmed;
+
+	trimmed = ft_strtrim(s1, set);
+	if (trimmed)
+	{
+		printf("String original: %s\n", s1);
+		printf("Set de caracteres: %s\n", set);
+		printf("String aparada: %s\n", trimmed);
+		free(trimmed);
+	}
+	else
+	{
+		printf("Erro ao aparar a string (resultou em NULL).\n");
+	}
+	return (0);
 }
 */

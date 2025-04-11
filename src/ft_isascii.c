@@ -6,11 +6,12 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:30:41 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/07 17:34:09 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/04/11 14:36:19 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include <stdio.h>
+
 int	ft_isascii(int c)
 {
 	return (c >= 0 && c <= 127);
