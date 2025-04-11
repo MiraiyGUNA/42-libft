@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
 int	ft_memcmp(const void *str1, const void *str2, size_t n)
 {
@@ -30,3 +31,57 @@ int	ft_memcmp(const void *str1, const void *str2, size_t n)
 	}
 	return (0);
 }
+/*
+int main(void) {
+    // Teste 1: Strings iguais, n = tamanho das strings
+    int result1 = ft_memcmp("abc", "abc", 3);
+    if (result1 == 0)
+        printf("Teste 1 (Strings iguais): Passado\n");
+    else
+        printf("Teste 1 (Strings iguais): Falhou, esperado: 0, obtido: %d\n", result1);
+
+    // Teste 2: Strings diferentes, n = tamanho das strings
+    int result2 = ft_memcmp("abc", "abd", 3);
+    if (result2 == -1) // 'c' - 'd' = -1
+        printf("Teste 2 (Strings diferentes): Passado\n");
+    else
+        printf("Teste 2 (Strings diferentes): Falhou, esperado: -1, obtido: %d\n", result2);
+
+    // Teste 3: Strings iguais, n > tamanho das strings
+    int result3 = ft_memcmp("abc", "abc", 5);
+    if (result3 == 0)
+        printf("Teste 3 (Strings iguais, n > tamanho): Passado\n");
+    else
+        printf("Teste 3 (Strings iguais, n > tamanho): Falhou, esperado: 0, obtido: %d\n", result3);
+
+    // Teste 4: Strings diferentes, n > tamanho das strings
+    int result4 = ft_memcmp("abc", "abd", 5);
+    if (result4 == -1) // 'c' - 'd' = -1
+        printf("Teste 4 (Strings diferentes, n > tamanho): Passado\n");
+    else
+        printf("Teste 4 (Strings diferentes, n > tamanho): Falhou, esperado: -1, obtido: %d\n", result4);
+
+    // Teste 5: Strings vazias, n = 0
+    int result5 = ft_memcmp("", "", 0);
+    if (result5 == 0)
+        printf("Teste 5 (Strings vazias): Passado\n");
+    else
+        printf("Teste 5 (Strings vazias): Falhou, esperado: 0, obtido: %d\n", result5);
+
+    // Teste 6: n = 1, strings diferentes no primeiro byte
+    int result6 = ft_memcmp("a", "b", 1);
+    if (result6 == -1)
+        printf("Teste 6 (n=1, diferente): Passado\n");
+    else
+        printf("Teste 6 (n=1, diferente): Falhou, esperado: -1, obtido: %d\n", result6);
+
+    // Teste 7: n = 1, strings iguais no primeiro byte
+    int result7 = ft_memcmp("a", "a", 1);
+    if (result7 == 0)
+        printf("Teste 7 (n=1, igual): Passado\n");
+    else
+        printf("Teste 7 (n=1, igual): Falhou, esperado: 0, obtido: %d\n", result7);
+
+    return 0;
+}
+*/

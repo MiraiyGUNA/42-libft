@@ -15,6 +15,7 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <stdio.h>
 
 /* PARTE 1 */
 int		ft_isalpha(int c);

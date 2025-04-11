@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+//#include <stdio.h>
+
 int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
@@ -18,3 +20,13 @@ int	ft_isdigit(int c)
 	}
 	return (0);
 }
+/*
+int	main(void)
+{
+	printf("ft_isdigit('0') = %d\n", ft_isdigit('0'));
+	printf("ft_isdigit('9') = %d\n", ft_isdigit('9'));
+	printf("ft_isdigit('a') = %d\n", ft_isdigit('a'));
+	printf("ft_isdigit('-') = %d\n", ft_isdigit('-'));
+	printf("ft_isdigit(' ') = %d\n", ft_isdigit(' '));
+}
+*/
