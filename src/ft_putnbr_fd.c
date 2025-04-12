@@ -31,6 +31,11 @@ void	ft_putnbr_fd(int n, int fd)
 	ft_putchar_fd(nbr % 10 + '0', fd);
 }
 
+void    ft_putchar_fd(char c, int fd)
+{
+    write(fd, &c, 1);
+}
+
 int main(void)
 {
     // Teste 1: Números positivos, negativos e zero em stdout

@@ -28,6 +28,11 @@ void	ft_putstr_fd(char *s, int fd)
     }
 }
 
+void    ft_putchar_fd(char c, int fd)
+{
+    write(fd, &c, 1);
+}
+
 int main(void)
 {
     // Teste 1: Escrevendo uma string em stdout (descritor 1)
