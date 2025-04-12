@@ -334,3 +334,61 @@ Em resumo, a função `ft_split` faz uma análise completa da string, ignorando 
   Em um ambiente de produção, seria interessante tratar não apenas a alocação de memória, mas também possíveis inputs inesperados, melhorando a portabilidade e a robustez do código.
 
 Se você quiser explorar mais sobre manipulação de strings, técnicas de gerenciamento de memória em C ou implementar funções semelhantes em outros contextos, posso detalhar outros exemplos. Que tal discutir como implementar funções de alto desempenho para grandes arquivos ou explorar padrões de design para bibliotecas utilitárias?
+
+---
+
+### Split
+
+1. Começamos a função ft_split, que recebe um array `s` e um char `c`
+   1. O array é o conteúdo que precisamos "limpar" ao colocar todas as palavras encontradas num array único para cada, ao invés de todas num só array.
+   2. O char serve como o limitador para definir o que é uma palavra.
+2. Criamos duas variáveis, uma `**strings` e outra `i`
+   1. Strings serve para devolver o resultado como queremos
+   2. i serve para percorrer strings e colocar as palavras nos espaços certos
+3. Verificamos se o array `s` que recebemos está vazio e se assim estiver, retorna nulo, como forma de prevenir erros na função
+4. colocamos i como 0, para este representar o primeiro array dos arrays
+5. Alocamos com malloc, o espaço necessário para todos o nosso array de arrays
+   1. alocamos um array de arrays, com o tamanho de um array vezes o tamanho total de palavras que temos, limitadas por c + 1, para o espaço final nulo
+   2. Para saber quantas palavras temos, usamos a funcao `total_strings`
+6. Em total strings, criamos um index e uma variavel count
+   1. index para percorrer a string que recebemos originalmente em split
+   2. count para ser incrementado, sempre que encontrar uma nova palavra
+7. Em total strings, percorremos o array, até ao fim da mesma
+   1. Enquanto não chegarmos ao fim da string e a posicao atual for igual a c, então, incrementa o i, andando assim para a frente posicao
+      1. Desta forma, estamos a passar à frente, todos os primeiros caracteres da string, quase como uma forma de a limpar
+      2. Desta forma, temos a certeza que vamos iniciar a contar as palavras, na posicao correta, porque já passamos o que não queremos à frente
+      3. Outra vantagem desta implementacao, é que este pedaço de codigo é universal, ou seja, funciona até quando estamos para o meio da string recebida, fazendo assim com que ele também sirva como um skip para as posicoes igual ao caracter
+   2. Depois, na posicao atual que estamos, verificamos se não é o fim da string
+      1. Se isto for verdade, então, aumenta o contador uma vez
+      2. Desta forma, estamos a contar quantas posicoes validas é que existem na string que recebemos
+   3. Depois de verificar na posicao atual, andamos para a frente, uma casa, com o código da posicao igual a char ou este novo while, que verifica quando não é igual ao char
+      1. Como este outro codigo é um while, ele só irá "desligar" quando chegar ao fim da palavra e desta forma, o count apenas será ativo uma vez, ao invés de contabilizar por cada character que não seja igual ao c
+   4. retomamos count, com o valor total de palavras
+8. o Código volta para o split
+9. fazemos uma verificao se a nossa variavel local string, está vazia. Se sim, retorna nulo e saimos do programa
+10. Percorremos a string que recebemos
+    1.  Se na posicao atual da string for diferente de char, então
+    2.  strings, a variavel local, é igual a funcao word
+11. Vamos para a funcao ft_word
+    1.  Esta funcao tem o objetivo de realmente gerar o array com apenas a palavra encontrada
+    2.  Dentro da funcao, criamos uma variavel `len_word`, um index e um char array word
+    3.  Para sabermos até onde é que podemos parrar de criar o array, precisamos saber o tamanho de uma palavra e para tal, usamos a funcao `sep_len` que, podemos a tratar como um contador de quantas letras existem numa palavra
+12. Vamos para a função sep_len
+    1. Ela tem como funcao, de indicar o tamanho que ocupa na memoria, uma palavra até chegar ao final da mesma, limitada pelo separador
+    2. Percorremos a string recebida, até que ela não seja igual ao separador e devolvemos o i
+       1. No caso, isto funciona, mesmo quando a string, começa com o separador, porque a funcao recebe a string, já na posicao certa e a trabalha de forma local
+       2. Ou seja, s[0] não é um separador, dentro da funcao
+       3. Este passo de "limpar" foi feito dentro do split, no while, com o if (*s) s++
+    3. returnamos o i, que é o tamanho de uma palavra
+ 13. Voltamos para ft_word e nela, alocamos memória no nosso array word, com o len_word
+     1.  Alocamos um array de char, com o tamanho de char * len_word + 1 (fazemos mais um porque, sempre começamos com 0, logo, precisamos incrementar mais um, para o valor real da palavra)
+ 14. Verificamos se a alocação de memoria foi correta e passamos para o while
+ 15. Enquanto i, que está em zero for menor que o tamanho da palavra que é igual a len_word
+     1.  Então, o nosso array recem gerado com malloc, é igual a s
+     2.  Novamente, o s[0] é local e já está na posicao certa
+ 16. No final, colocamos o nulo para finalizar o array que geramos e devolvemos word
+ 17. Feito o ft_word, voltamos a split
+ 18. Se onde estamos em string que criamos + 1 for igual ao nulo, aka, o fim do array de arrays, então devolve o free_memory que serve como forma de limpar toda a memoria que usamos a mais
+ 19. Se essa condição não for verdade, então, vamos fazer o mesmo, mas agora, para a próxima palavra
+ 20. Para o fazer, iteramos a s com o tamanho do sep_len, para estarmos no local exato de um não char/separador
+13. No final, adiciomos o nulo e retumamos as strings geradas
