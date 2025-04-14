@@ -6,13 +6,13 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 15:39:01 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/11 18:57:53 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/04/14 17:20:23 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	total_strings(char const *s, char c)
+static int	ft_total_strings(char const *s, char c)
 {
 	int	i;
 	int	count;
@@ -33,7 +33,7 @@ static int	total_strings(char const *s, char c)
 	return (count);
 }
 
-static int	sep_len(char const *s, char c)
+static int	ft_sep_len(char const *s, char c)
 {
 	int	i;
 
@@ -50,7 +50,7 @@ static char	*ft_word(char const *s, char c)
 	char	*word;
 
 	i = 0;
-	len_word = sep_len(s, c);
+	len_word = ft_sep_len(s, c);
 	word = (char *)malloc(sizeof(char) * (len_word + 1));
 	if (!word)
 		return (NULL);
@@ -63,7 +63,7 @@ static char	*ft_word(char const *s, char c)
 	return (word);
 }
 
-static void	*free_memory(char **strings, int i)
+static void	*ft_free_memory(char **strings, int i)
 {
 	while (i-- > 0)
 		free(strings[i]);
@@ -79,7 +79,7 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	i = 0;
-	strings = (char **)malloc(sizeof(char *) * (total_strings(s, c) + 1));
+	strings = (char **)malloc(sizeof(char *) * (ft_total_strings(s, c) + 1));
 	if (!strings)
 		return (NULL);
 	while (*s)
@@ -88,8 +88,8 @@ char	**ft_split(char const *s, char c)
 		{
 			strings[i] = ft_word(s, c);
 			if (strings[i++] == NULL)
-				return (free_memory(strings, i));
-			s += sep_len(s, c);
+				return (ft_free_memory(strings, i));
+			s = s + ft_sep_len(s, c);
 		}
 		if (*s)
 			s++;

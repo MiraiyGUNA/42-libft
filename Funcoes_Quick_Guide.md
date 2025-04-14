@@ -2,11 +2,16 @@
 
 ### isalpha
 
-> Verifica se o caractere é uma letra do alfabeto (A–Z ou a–z).  
+> Verifica se o caractere é uma letra do alfabeto (A–Z ou a–z). 
+
+1. Se for entre a && z || entre A && Z
+	1. Devolve 1
+2. Se nao, devolve 0
 
 ### isdigit
  
 > Verifica se o caractere é um dígito numérico (0–9).
+
 
 ### isalnum
  
@@ -27,6 +32,9 @@
 ### memset
  
 > Preenche os primeiros `n` bytes de uma área de memória com um determinado valor.
+
+1. Recebo um array `p`, um `value` e um tamanho `n`
+
 
 ### bzero
  
@@ -113,6 +121,32 @@
 ### split
  
 > Separa uma string em um array de strings com base em um caractere delimitador.
+
+1. `**ft_split` que recebe uma string `*s` e um char `c`
+2. Alocar o numero de arrays certos, dentro do array de arrays
+	1. Para isso, fazemos malloc, com o tamanho de um array * `ft_total_strings` + 1
+	2. Fazemos mais um, para colocar o `\0`
+3. `ft_total_strings` ira contar quantas possiveis "palavras" existem no array
+	1. Para tal efeito, criamos uma variavel `count` para ser devolvida, que ira ter dentro dela o numero de palavras
+	2. Percorremos a string inteira, com `while (s[i])`
+		1. Dentro do while, fazemos 3 checks
+			1. Percorremos as posicoes iniciais iguais a `c`
+			2. Depois de "limpo", incrementamos o count com um if (if so corre uma vez)
+			3. Depois de incrementando, percorremos a string com outro while, para sair da "palavra", ao colocar na condicao `!s[i] == c`
+		2. Desta forma, cada um destes 3, e executado cada um na sua vez, sem overlap
+			1. O primeiro While passa a frente os `c`
+			2. O if incrementa o count em 1
+			3. O segundo While, vai ate ao proximo `c`
+	3. No final, temos o numero de "palavras" que sera usado para gerar o array de arrays final
+4. Atualmente, temos dois arrays.
+	1. Um que e o array original `*s` e um outro que e o array de arrays `strings`
+5. Percorremos o array original `*s`
+	1. Enquanto percorremos o array original, temos dois checks.
+		1. Um check no comeco que verifica se o espaco atual nao e igual a `c`
+		2. Um check para passar a frente
+	2. Se na posicao atual, nao for igual a `c`, entao
+		1. Na posicao atual de `strings` e igual a `ft_words`
+	
 
 ### itoa
  
