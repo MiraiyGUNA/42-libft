@@ -6,14 +6,14 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 16:57:47 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/13 15:45:33 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/04/14 13:52:20 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <limits.h>
 //#include <stdio.h>
 //#include <stdlib.h>
-//#include <limits.h>
 
 static int	ft_int_len(int n)
 {
@@ -64,33 +64,31 @@ char	*ft_itoa(int n)
 	ft_int_to_char(number, nbr, i);
 	return (nbr);
 }
-
-
-
-int main(void)
+/*
+int	main(void)
 {
-    int test_cases[] = {0, 1, -1, 42, -42, 123456, -7890, INT_MAX, INT_MIN};
-    int num_tests = sizeof(test_cases) / sizeof(test_cases[0]);
-    char *result;
-	int	i;
+	int		test_cases[] = {0, 1, -1, 42, -42, 123456, -7890, INT_MAX, INT_MIN};
+	int		num_tests;
+	char	*result;
+	int		i;
 
-    printf("Teste da função ft_itoa:\n\n");
+	num_tests = sizeof(test_cases) / sizeof(test_cases[0]);
+	printf("Teste da função ft_itoa:\n\n");
 	i = 0;
-
-    while (i < num_tests)
-    {
-        result = ft_itoa(test_cases[i]);
-        if (!result)
-        {
-            printf("Erro: alocação falhou para ft_itoa(%d)\n", test_cases[i]);
-        }
-        else
-        {
-            printf("ft_itoa(%d) = %s\n", test_cases[i], result);
-            free(result);
-        }
+	while (i < num_tests)
+	{
+		result = ft_itoa(test_cases[i]);
+		if (!result)
+		{
+			printf("Erro: alocação falhou para ft_itoa(%d)\n", test_cases[i]);
+		}
+		else
+		{
+			printf("ft_itoa(%d) = %s\n", test_cases[i], result);
+			free(result);
+		}
 		i++;
-    }
-    
-    return 0;
+	}
+	return (0);
 }
+*/

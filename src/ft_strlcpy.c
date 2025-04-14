@@ -6,7 +6,7 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:28:30 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/11 15:15:51 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/04/14 15:11:29 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,6 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 	return (length);
 }
 /*
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-	{
-		i++;
-	}
-	return (i);
-}
-
 int	main(void)
 {
 	const char	src[] = "High And Low";
