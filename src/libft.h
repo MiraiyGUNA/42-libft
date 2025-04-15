@@ -6,7 +6,7 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:42:50 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/15 16:41:25 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/04/15 17:39:57 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,18 @@
 # include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
+/*-------*/
+/* BONUS */
+/*-------*/
+/* DEFINIR T_LIST */
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}					t_list;
+/*---------*/
 /* PARTE 1 */
+/*---------*/
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);
@@ -38,10 +49,12 @@ void	*ft_memchr(const void *str, int c, size_t n);
 int		ft_memcmp(const void *str1, const void *str2, size_t n);
 char	*ft_strnstr(const char *big, const char *little, size_t n);
 int		ft_atoi(const char *str);
-/* PARTE 1 - Malloc */
+/* Parte 1 -  Malloc */
 void	*ft_calloc(size_t num, size_t size);
 char	*ft_strdup(char *src);
+/*---------*/
 /* PARTE 2 */
+/*---------*/
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
@@ -53,13 +66,9 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+/*-------*/
 /* BONUS */
-/* DEFINIR T_LIST */
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}					t_list;
+/*------*/
 /* PROTOTIPOS DO BONUS */
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
@@ -68,4 +77,6 @@ t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
+void	ft_lstiter(t_list *lst, void (*f)(void *));
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 #endif
