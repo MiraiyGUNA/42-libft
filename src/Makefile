@@ -6,7 +6,7 @@
 #    By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 17:48:51 by vde-maga          #+#    #+#              #
-#    Updated: 2025/04/14 13:57:13 by vde-maga         ###   ########.fr        #
+#    Updated: 2025/04/15 16:52:53 by vde-maga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,12 +22,14 @@ PART2 = ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c \
 	ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c \
 	ft_putendl_fd.c ft_putnbr_fd.c
 
-BONUS = 
+BONUS = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
+	ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \
+	ft_lstclear_bonus.c
 
 SRC = ${PART1} ${PART2}
 
 OFILES = ${SRC:.c=.o}
-BONUS_OBJS = ${BONUS:.c=.o}
+BONUS_OFILES = ${BONUS:.c=.o}
 
 COMPILE = cc -Wall -Wextra -Werror
 DELETE = rm -f
@@ -48,5 +50,8 @@ fclean: clean
 	${DELETE} ${NAME}
 
 re: fclean all
+
+bonus: ${OFILES} ${BONUS_OFILES}
+	ar rcs ${NAME} ${OFILES} ${BONUS_OFILES}
 
 .PHONY: all clean fclean re
