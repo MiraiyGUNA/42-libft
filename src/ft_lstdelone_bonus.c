@@ -6,14 +6,11 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:23:18 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/15 16:38:54 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/04/16 12:05:34 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
@@ -21,26 +18,57 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*))
 	free(lst);
 }
 
-int main(void)
+/*
+void	del_content(void *content)
 {
-    // Cria um nó com o conteúdo alocado dinamicamente.
-    // Usamos strdup para duplicar a string e garantir que ela esteja em memória dinâmica.
-    t_list *node = ft_lstnew(strdup("Elemento para deletar"));
-    if (!node)
-    {
-        fprintf(stderr, "Erro ao criar o nó.\n");
-        return 1;
-    }
-    
-    // Exibe o conteúdo do nó antes da deleção.
-    printf("Conteúdo do nó antes da deleção: %s\n", (char *)node->content);
-    
-    // Deleta o nó utilizando ft_lstdelone.
-    // A função free é passada como o ponteiro del, que libera o conteúdo alocado.
-    ft_lstdelone(node, free);
-    
-    // ATENÇÃO: Após essa chamada, o nó foi liberado e não é seguro acessá-lo.
-    printf("Nó deletado com sucesso.\n");
-    
-    return 0;
+	free(content);
 }
+
+int	main(void)
+{
+	// Criar uma lista com 3 nós
+	char *str1 = ft_strdup("Primeiro");
+	char *str2 = ft_strdup("Segundo");
+	char *str3 = ft_strdup("Terceiro");
+	
+	t_list *node1 = ft_lstnew(str1);
+	t_list *node2 = ft_lstnew(str2);
+	t_list *node3 = ft_lstnew(str3);
+	
+	// Ligar os nós
+	node1->next = node2;
+	node2->next = node3;
+	node3->next = NULL;
+	
+	// Mostar a lista original
+	t_list *current = node1;
+	printf("Lista original:\n");
+	while (current)
+	{
+		printf("%s\n", (char *)current->content);
+		current = current->next;
+	}
+	
+	// Deletar o nó do meio
+	t_list *temp = node1->next;
+	node1->next = node3; // Relinkar a lista pulando o nó do meio
+	
+	printf("\nDeletando o nó do meio (Segundo)\n");
+	ft_lstdelone(temp, del_content);
+	
+	// Mostrar a lista após a deleção
+	current = node1;
+	printf("\nLista após deletar o nó do meio:\n");
+	while (current)
+	{
+		printf("%s\n", (char *)current->content);
+		current = current->next;
+	}
+	
+	// Limpar o restante da memória
+	ft_lstdelone(node3, del_content);
+	ft_lstdelone(node1, del_content);
+	
+	return (0);
+}
+*/

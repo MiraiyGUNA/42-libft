@@ -6,14 +6,11 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:40:27 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/15 16:52:17 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/04/16 12:05:05 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
@@ -28,38 +25,48 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 	*lst = NULL;
 }
 
-int main(void)
+/*
+void	del_content(void *content)
 {
-    t_list *lista = NULL;
-    t_list *node;
-    t_list *atual;
+	free(content);
+}
 
-    // Cria e adiciona o primeiro nó com conteúdo alocado dinamicamente
-    node = ft_lstnew(strdup("Nó 1"));
-    ft_lstadd_back(&lista, node);
-
-    // Cria e adiciona o segundo nó
-    node = ft_lstnew(strdup("Nó 2"));
-    ft_lstadd_back(&lista, node);
-
-    // Cria e adiciona o terceiro nó
-    node = ft_lstnew(strdup("Nó 3"));
-    ft_lstadd_back(&lista, node);
-
-    // Percorre e imprime os conteúdos dos nós
-    atual = lista;
-    while (atual)
-    {
-        printf("%s -> ", (char *)atual->content);
-        atual = atual->next;
-    }
-    printf("NULL\n");
-
-    // Limpa a lista, liberando toda a memória alocada para os conteúdos e para os nós
-    ft_lstclear(&lista, free);
-
-    // Verifica se a lista foi esvaziada com sucesso
-    if (lista == NULL)
-        printf("Lista esvaziada com sucesso.\n");
-
-    return 0;
+int	main(void)
+{
+	t_list *list = NULL;
+	
+	// Criar uma lista com conteúdo alocado dinamicamente
+	char *str1 = ft_strdup("Primeiro");
+	char *str2 = ft_strdup("Segundo");
+	char *str3 = ft_strdup("Terceiro");
+	
+	t_list *node1 = ft_lstnew(str1);
+	t_list *node2 = ft_lstnew(str2);
+	t_list *node3 = ft_lstnew(str3);
+	
+	ft_lstadd_back(&list, node1);
+	ft_lstadd_back(&list, node2);
+	ft_lstadd_back(&list, node3);
+	
+	// Mostrar lista antes de limpar
+	t_list *current = list;
+	printf("Lista antes de limpar:\n");
+	while (current)
+	{
+		printf("%s\n", (char *)current->content);
+		current = current->next;
+	}
+	
+	// Limpar a lista
+	ft_lstclear(&list, del_content);
+	
+	// Verificar se a lista está vazia
+	printf("\nLista após limpar:\n");
+	if (list == NULL)
+		printf("Lista está vazia\n");
+	else
+		printf("ERRO: Lista não está vazia\n");
+	
+	return (0);
+}
+*/

@@ -6,15 +6,11 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 17:41:30 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/15 17:49:09 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/04/16 12:06:56 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
@@ -39,62 +35,69 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	return (new_list);
 }
 
-void *to_upper(void *content)
+/*
+// Função para mapear o conteúdo da lista (exemplo: converter para maiúsculas)
+void *convert_to_upper(void *content)
 {
-    char *str = (char *)content;
-    size_t len = strlen(str);
-    char *upper_str = malloc(len + 1);
-    if (!upper_str)
-        return (NULL);
-    for (size_t i = 0; i < len; i++)
-        upper_str[i] = toupper((unsigned char)str[i]);
-    upper_str[len] = '\0';
-    return (upper_str);
+	char *str = ft_strdup((char *)content);
+	int i = 0;
+	
+	if (!str)
+		return (NULL);
+	
+	while (str[i])
+	{
+		if (str[i] >= 'a' && str[i] <= 'z')
+			str[i] = str[i] - 32;
+		i++;
+	}
+	
+	return (str);
 }
 
-// Função auxiliar para imprimir os conteúdos de uma lista.
-void print_list(t_list *lst)
+// Função para deletar o conteúdo
+void delete_content(void *content)
 {
-    while (lst)
-    {
-        printf("%s -> ", (char *)lst->content);
-        lst = lst->next;
-    }
-    printf("NULL\n");
+	free(content);
 }
 
 int main(void)
 {
-    t_list *lst_original = NULL;
-    t_list *lst_mapeada = NULL;
-
-    // Cria a lista original com alguns nós.
-    // Utiliza-se ft_lstnew para criar o nó e ft_lstadd_back para inserir no final.
-    ft_lstadd_back(&lst_original, ft_lstnew("test1"));
-    ft_lstadd_back(&lst_original, ft_lstnew("hello"));
-    ft_lstadd_back(&lst_original, ft_lstnew("world"));
-
-    // Exibe a lista original.
-    printf("Lista original:\n");
-    print_list(lst_original);
-
-    // Aplica ft_lstmap: cada nó tem seu conteúdo transformado pela função to_upper.
-    // Em caso de erro na alocação de algum novo nó, ft_lstmap limpa a nova lista.
-    lst_mapeada = ft_lstmap(lst_original, to_upper, free);
-    if (!lst_mapeada)
-    {
-        fprintf(stderr, "Erro ao mapear os nós da lista.\n");
-        ft_lstclear(&lst_original, free);
-        return (1);
-    }
-
-    // Exibe a lista mapeada (com os conteúdos em letras maiúsculas).
-    printf("Lista mapeada (conteúdo em maiúsculas):\n");
-    print_list(lst_mapeada);
-
-    // Libera a memória alocada para ambas as listas.
-    ft_lstclear(&lst_original, free);
-    ft_lstclear(&lst_mapeada, free);
-
-    return (0);
+	// Criar lista original
+	t_list *list = NULL;
+	t_list *node1 = ft_lstnew(ft_strdup("primeiro"));
+	t_list *node2 = ft_lstnew(ft_strdup("segundo"));
+	t_list *node3 = ft_lstnew(ft_strdup("terceiro"));
+	
+	ft_lstadd_back(&list, node1);
+	ft_lstadd_back(&list, node2);
+	ft_lstadd_back(&list, node3);
+	
+	// Imprimir lista original
+	t_list *current = list;
+	printf("Lista original:\n");
+	while (current)
+	{
+		printf("%s\n", (char *)current->content);
+		current = current->next;
+	}
+	
+	// Mapear lista
+	t_list *mapped_list = ft_lstmap(list, convert_to_upper, delete_content);
+	
+	// Imprimir lista mapeada
+	current = mapped_list;
+	printf("\nLista mapeada (maiúsculas):\n");
+	while (current)
+	{
+		printf("%s\n", (char *)current->content);
+		current = current->next;
+	}
+	
+	// Limpar memória
+	ft_lstclear(&list, delete_content);
+	ft_lstclear(&mapped_list, delete_content);
+	
+	return (0);
 }
+*/
