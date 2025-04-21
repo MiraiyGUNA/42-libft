@@ -6,7 +6,7 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:23:18 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/16 12:05:34 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/04/21 16:21:40 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
+	if (!lst || !del)
+		return ;
 	del(lst->content);
 	free(lst);
 }

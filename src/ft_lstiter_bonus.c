@@ -6,7 +6,7 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 17:29:11 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/16 12:06:00 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/04/21 16:26:31 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	t_list	*temp;
 
+	if (!lst || !f)
+		return ;
 	temp = lst;
 	while (temp)
 	{

@@ -6,7 +6,7 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:40:27 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/16 12:05:05 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/04/21 16:22:57 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,16 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
 	t_list	*temp;
 
-	while (*lst)
+	if (lst && del)
 	{
-		temp = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = temp;
+		while (*lst)
+		{
+			temp = (*lst)->next;
+			ft_lstdelone(*lst, del);
+			*lst = temp;
+		}
+		*lst = NULL;
 	}
-	*lst = NULL;
 }
 
 /*

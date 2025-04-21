@@ -5,59 +5,56 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/16 17:09:52 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/17 17:59:51 by vde-maga         ###   ########.fr       */
+/*   Created: 2025/04/10 15:39:01 by vde-maga          #+#    #+#             */
+/*   Updated: 2025/04/14 17:20:23 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdio.h>
 
-static int	ft_total_words(char const *array, char c)
+static int	ft_total_strings(char const *s, char c)
 {
 	int	i;
-	int	word_count;
+	int	count;
 
-	if (!array)
-	{
+	if (!s)
 		return (0);
-	}
+	count = 0;
 	i = 0;
-	word_count = 0;
-	while (array[i])
+	while (s[i])
 	{
-		while (array[i] == c)
+		while (s[i] && (s[i] == c))
 			i++;
-		if (array[i])
-			word_count = word_count + 1;
-		while (array[i] != c && array[i])
+		if (s[i])
+			count++;
+		while (s[i] && !(s[i] == c))
 			i++;
 	}
-	return (word_count);
+	return (count);
 }
 
-static int	ft_length_word(char const *array, char c)
+static int	ft_sep_len(char const *s, char c)
 {
 	int	i;
 
 	i = 0;
-	while (array[i] && !(array[i] == c))
+	while (s[i] && !(s[i] == c))
 		i++;
 	return (i);
 }
 
-static char	*ft_create_array_of_word(char const *s, char c)
+static char	*ft_word(char const *s, char c)
 {
-	int		length_word;
+	int		len_word;
 	int		i;
 	char	*word;
 
 	i = 0;
-	length_word = ft_length_word(s, c);
-	word = (char *) malloc (sizeof(char) * (length_word + 1));
+	len_word = ft_sep_len(s, c);
+	word = (char *)malloc(sizeof(char) * (len_word + 1));
 	if (!word)
 		return (NULL);
-	while (i < length_word)
+	while (i < len_word)
 	{
 		word[i] = s[i];
 		i++;
@@ -66,60 +63,67 @@ static char	*ft_create_array_of_word(char const *s, char c)
 	return (word);
 }
 
-static void	*ft_free_memory_if_end(char **dest, int i)
+static void	*ft_free_memory(char **strings, int i)
 {
 	while (i-- > 0)
-		free(dest[i]);
-	free(dest);
+		free(strings[i]);
+	free(strings);
 	return (NULL);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**dest;
+	char	**strings;
 	int		i;
 
 	if (!s)
 		return (NULL);
 	i = 0;
-	dest = (char **) malloc (sizeof(char *) * (ft_total_words(s, c) + 1));
-	if (!dest)
+	strings = (char **)malloc(sizeof(char *) * (ft_total_strings(s, c) + 1));
+	if (!strings)
 		return (NULL);
 	while (*s)
 	{
-		while (*s && *s == c)
-			s++;
-		if (*s)
+		if (*s != c)
 		{
-			dest[i] = ft_create_array_of_word(s, c);
-			if (!dest[i])
-				return (ft_free_memory_if_end(dest, i));
-			i++;
-			s = s + ft_length_word(s, c);
+			strings[i] = ft_word(s, c);
+			if (strings[i++] == NULL)
+				return (ft_free_memory(strings, i));
+			s = s + ft_sep_len(s, c);
 		}
+		if (*s)
+			s++;
 	}
-	dest[i] = NULL;
-	return (dest);
+	strings[i] = NULL;
+	return (strings);
 }
 /*
 int	main(void)
 {
-	char const	*s;
-	char		c;
-	char		**octets;
-	int			n;
-	int			i;
+	char	**words;
+	int		i;
+	char	*str;
+	char	delim;
 
-	s = "144.107.56.234";
-	c = '.';
-	octets = ft_split(s, c);
-	n = ft_total_words(s, c);
 	i = 0;
-	while (i < n)
+	str = "   Hello, this is a test   string for ft_split!  ";
+	delim = ' ';
+
+	words = ft_split(str, delim);
+	if (!words)
 	{
-		printf("%s\n", octets[i]);
+		printf("Erro na alocação de memória.\n");
+		return (1);
+	}
+	printf("String original:\n\"%s\"\n\n", str);
+	printf("Palavras após o split (delimitador '%c'):\n", delim);
+	while (words[i])
+	{
+		printf("Word[%d]: \"%s\"\n", i, words[i]);
+		free(words[i]); // Libera cada palavra individualmente
 		i++;
 	}
+	free(words); // Libera o array de ponteiros
 	return (0);
 }
 */

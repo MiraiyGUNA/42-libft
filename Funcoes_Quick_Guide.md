@@ -118,6 +118,13 @@
  
 > Remove os caracteres presentes em um conjunto (`set`) do início e do fim de uma string, retornando uma nova string sem esses caracteres.
 
+1. **Verifico se as entradas são válidas**: Se a string `s1` ou o conjunto `set` forem nulos, a função retorna `NULL`.
+2. **Remove os caracteres iniciais que pertencem a `set`**: Enquanto a string apontada por `s1` não estiver vazia e a função `ft_strchr` encontrar o caractere atual de `s1` em `set`, o ponteiro `s1` avança, ignorando esses caracteres.
+3. **Calcula o tamanho da string restante**: Após a remoção dos caracteres iniciais, calcula o tamanho da string restante usando `ft_strlen` e armazena em `i`.
+4. **Remove os caracteres finais que pertencem a `set`**: Enquanto `i > 0` e o caractere anterior ao final da string (`s1[i - 1]`) pertencer a `set`, diminui o valor de `i`, efetivamente ignorando esses caracteres finais.
+5. **Retorna a substring "limpa"**: Usa `ft_substr` para criar uma nova string que começa no início de `s1` (após os caracteres ignorados iniciais) e tem comprimento `i`, que corresponde ao tamanho da string após a remoção dos caracteres do início e do fim.
+
+
 ### split
  
 > Separa uma string em um array de strings com base em um caractere delimitador.
@@ -151,6 +158,22 @@
 ### itoa
  
 > Converte um número inteiro em sua representação como string (array de `char`).
+
+1. Recebo o numero para ser convertido para um array de char
+2. Crio um index, um array de chars para devolver e um, para alocar o numero recebido
+3. Coloco o index com o tamanho do inteiro recebido
+	1. Divido o numero por 10, ou seja, ando uma casa decimal para traz e a cada um desses passos, incremento uma variavel len que no final a devolvo
+4. Aloco em nbr, o meu array de char, o espaco na memoria do index + o nulo
+5. Coloco o nulo do array, o nulo do array de chars
+6. Se o numero que recebi for 0, eu escrevo 0 na primeira posicao de nbr.
+	1. Preciso fazer isto, porque em passos a frente, se for 0, nao ira funcionar a logica
+7. Se o numero recebido for menor que 0, entao, faco com que a posicao 0 seja - e multiplico o numero recebido por -1, tornando o positivo
+8. Coloco o numero recebido na minha variavel local number, como forma de extender o escopo da variavel recebida, para tratar dos int max e min
+9. Envio o numero local, o array vazio e o tamanho do numero para uma funcao
+	1. Enquanto o numero recebido for maior que 0, entao
+	2. Na posicao de i atual, faz '0' + (number % 10)
+		1. Isto ira devolver o numero no final do numero recebido, convertido para char
+	3. Ando uma casa decimal para tras e ando o i para traz
 
 ### strmapi
  
