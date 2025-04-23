@@ -6,30 +6,30 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 14:45:40 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/11 14:59:31 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/04/23 16:48:04 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 //#include <stdio.h>
 
-char	*ft_strchr(const char *str, int c)
+char	*ft_strchr(const char *s, int c)
 {
 	int	i;
 
 	c = (unsigned char)c;
 	i = 0;
-	while (str[i])
+	while (s[i])
 	{
-		if (str[i] == c)
+		if (s[i] == c)
 		{
-			return ((char *)&str[i]);
+			return ((char *)&s[i]);
 		}
 		i++;
 	}
 	if (c == '\0')
 	{
-		return ((char *)&str[i]);
+		return ((char *)&s[i]);
 	}
 	return (NULL);
 }

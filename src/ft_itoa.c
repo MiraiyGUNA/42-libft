@@ -6,14 +6,12 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 16:57:47 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/14 13:52:20 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/04/22 16:36:51 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <limits.h>
 //#include <stdio.h>
-//#include <stdlib.h>
 
 static int	ft_int_len(int n)
 {

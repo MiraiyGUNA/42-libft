@@ -6,23 +6,23 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 18:15:19 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/11 14:56:13 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/04/23 16:45:44 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 //#include <stdio.h>
 
-void	*ft_memset(void *ptr, int value, size_t n)
+void	*ft_memset(void *s, int c, size_t n)
 {
 	unsigned char	*str;
 	size_t			i;
 
-	str = ptr;
+	str = s;
 	i = 0;
 	while (i < n)
 	{
-		str[i] = value;
+		str[i] = c;
 		i++;
 	}
 	return (str);

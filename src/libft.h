@@ -6,7 +6,7 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:42:50 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/15 17:39:57 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/04/23 20:06:03 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlcat(char	*dst, const char *src, size_t size);
 char	*ft_strchr(const char *str, int c);
 char	*ft_strrchr(const char *str, int c);
-int		ft_strncmp(char *str1, char *str2, size_t n);
+int		ft_strncmp(char *s1, char *s2, size_t n);
 void	*ft_memchr(const void *str, int c, size_t n);
 int		ft_memcmp(const void *str1, const void *str2, size_t n);
 char	*ft_strnstr(const char *big, const char *little, size_t n);
 int		ft_atoi(const char *str);
 /* Parte 1 -  Malloc */
 void	*ft_calloc(size_t num, size_t size);
-char	*ft_strdup(char *src);
+char	*ft_strdup(char *s);
 /*---------*/
 /* PARTE 2 */
 /*---------*/

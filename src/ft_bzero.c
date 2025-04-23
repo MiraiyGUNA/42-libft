@@ -6,19 +6,19 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:58:06 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/11 14:28:24 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/04/23 16:39:38 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 //#include <stdio.h>
 
-void	*ft_bzero(void *ptr, size_t n)
+void	*ft_bzero(void *s, size_t n)
 {
 	unsigned char	*str;
 	size_t			i;
 
-	str = ptr;
+	str = s;
 	i = 0;
 	while (i < n)
 	{
@@ -30,11 +30,19 @@ void	*ft_bzero(void *ptr, size_t n)
 /*
 int main(void)
 {
-	// Teste 1: bzero com um array de inteiros
+
 	int	arr[5] = {1, 2, 3, 4, 5};
 	int	i = 0;
+	printf("Teste 1 (array de inteiros - ANTES): ");
+	while (i < 5)
+	{
+		printf("%d ", arr[i]);
+		i++;
+	}
+	printf("\n");
 	ft_bzero(arr, sizeof(arr));
-	printf("Teste 1 (array de inteiros): ");
+	i = 0;
+	printf("Teste 1 (array de inteiros - DEPOIS): ");
 	while (i < 5)
 	{
 		printf("%d ", arr[i]);
@@ -42,19 +50,27 @@ int main(void)
 	}
 	printf("\n");
 
-	// Teste 2: bzero com uma string
+
+	printf("\n");
 	char	str[10] = "MaxPayne";
+	printf("Teste 2 (string - ANTES): \"%s\"\n", str);
 	ft_bzero(str, sizeof(str));
-	printf("Teste 2 (string): \"%s\"\n", str);
+	printf("Teste 2 (string - DEPOIS): \"%s\"\n", str);
 
-	// Teste 3: bzero com um ponteiro nulo
-	//void	*ptr = NULL;
-	//ft_bzero(ptr, 10);
 
-	// Teste 4: bzero com tamanho zero
+	printf("\n");
 	int	arr2[5] = {1, 2, 3, 4, 5};
+	printf("Teste 3 (tamanho zero - ANTES): ");
+	i = 0;
+	while (i < 5) 
+	{
+		printf("%d ", arr2[i]);
+		i++;
+	}
+	printf("\n");
+
 	ft_bzero(arr2, 0);
-	printf("Teste 4 (tamanho zero): ");
+	printf("Teste 3 (tamanho zero - DEPOIS): ");
 	i = 0;
 	while (i < 5) 
 	{

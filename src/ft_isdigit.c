@@ -6,7 +6,7 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:23:30 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/11 14:37:12 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/04/22 16:34:19 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,14 @@ int	ft_isdigit(int c)
 /*
 int	main(void)
 {
-	printf("ft_isdigit('0') = %d\n", ft_isdigit('0'));
-	printf("ft_isdigit('9') = %d\n", ft_isdigit('9'));
-	printf("ft_isdigit('a') = %d\n", ft_isdigit('a'));
-	printf("ft_isdigit('-') = %d\n", ft_isdigit('-'));
-	printf("ft_isdigit(' ') = %d\n", ft_isdigit(' '));
+	printf("Teste 1 (a): %d\n", ft_isdigit('a'));
+	printf("Teste 1 (z): %d\n", ft_isdigit('z'));
+
+	printf("Teste 2 (A): %d\n", ft_isdigit('A'));
+	printf("Teste 2 (Z): %d\n", ft_isdigit('Z'));
+
+	printf("Teste 3 (0): %d\n", ft_isdigit('0'));
+	printf("Teste 3 (!): %d\n", ft_isdigit('!'));
+	printf("Teste 3 ( ): %d\n", ft_isdigit(' '));
 }
 */

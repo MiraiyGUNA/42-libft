@@ -6,7 +6,7 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:30:41 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/11 14:36:19 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/04/22 16:31:43 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,16 @@ int	ft_isascii(int c)
 /*
 int	main(void)
 {
-	printf("ft_isascii(0) = %d\n", ft_isascii(0));
-	printf("ft_isascii(31) = %d\n", ft_isascii(31));
-	printf("ft_isascii(32) = %d\n", ft_isascii(32));
-	printf("ft_isascii(127) = %d\n", ft_isascii(127));
-	printf("ft_isascii(128) = %d\n", ft_isascii(128));
-	printf("ft_isascii(-1) = %d\n", ft_isascii(-1));
+	printf("Teste 1 (a): %d\n", ft_isascii('a'));
+	printf("Teste 1 (z): %d\n", ft_isascii('z'));
+
+	printf("Teste 2 (A): %d\n", ft_isascii('A'));
+	printf("Teste 2 (Z): %d\n", ft_isascii('Z'));
+
+	printf("Teste 3 (0): %d\n", ft_isascii('0'));
+	printf("Teste 3 (!): %d\n", ft_isascii('!'));
+	printf("Teste 3 ( ): %d\n", ft_isascii(' '));
+
+	return (0);
 }
 */

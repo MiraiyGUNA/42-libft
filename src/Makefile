@@ -6,7 +6,7 @@
 #    By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 17:48:51 by vde-maga          #+#    #+#              #
-#    Updated: 2025/04/16 11:57:07 by vde-maga         ###   ########.fr        #
+#    Updated: 2025/04/23 17:22:43 by vde-maga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,23 +35,27 @@ COMPILE = cc -Wall -Wextra -Werror
 DELETE = rm -f
 INCLUDE = -I .
 
-${NAME}: ${OFILES}
-	ar rcs ${NAME} ${OFILES}
 
 all: ${NAME}
 
-.o: .c
-	${COMPILE} ${INCLUDE} -c 
+${NAME}: ${OFILES}
+	ar rcs ${NAME} ${OFILES}
+
+%.o: %.c
+	${COMPILE} ${INCLUDE} -c $< -o $@
 
 clean:
-	${DELETE} ${OFILES}
+	${DELETE} ${OFILES} ${BONUS_OFILES} .bonus
 
 fclean: clean
 	${DELETE} ${NAME}
 
 re: fclean all
 
-bonus: ${OFILES} ${BONUS_OFILES}
+bonus: .bonus
+
+.bonus: ${OFILES} ${BONUS_OFILES}
 	ar rcs ${NAME} ${OFILES} ${BONUS_OFILES}
+	touch .bonus
 
 .PHONY: all clean fclean re

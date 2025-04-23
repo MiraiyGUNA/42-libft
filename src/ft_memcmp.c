@@ -6,21 +6,21 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 11:16:34 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/11 14:45:34 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/04/23 16:44:31 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 //#include <stdio.h>
 
-int	ft_memcmp(const void *str1, const void *str2, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	const unsigned char	*pstr1;
 	const unsigned char	*pstr2;
 	int					i;
 
-	pstr1 = (const unsigned char *)str1;
-	pstr2 = (const unsigned char *)str2;
+	pstr1 = (const unsigned char *)s1;
+	pstr2 = (const unsigned char *)s2;
 	i = 0;
 	while (n != 0)
 	{

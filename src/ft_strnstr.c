@@ -6,7 +6,7 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 11:19:13 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/11 18:53:05 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/04/23 16:54:00 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 //#include <stdio.h>
 
-char	*ft_strnstr(const char *big, const char *little, size_t n)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
 	size_t	little_length;
@@ -23,13 +23,13 @@ char	*ft_strnstr(const char *big, const char *little, size_t n)
 	little_length = ft_strlen(little);
 	if (little_length == 0 || big == little)
 		return ((char *)big);
-	if (n == 0)
+	if (len == 0)
 		return (NULL);
 	i = 0;
-	while (big[i] && i < n)
+	while (big[i] && i < len)
 	{
 		j = 0;
-		while (big[i + j] == little[j] && little[j] && (i + j) < n)
+		while (big[i + j] == little[j] && little[j] && (i + j) < len)
 			j++;
 		if (j == little_length)
 			return ((char *)big + i);
