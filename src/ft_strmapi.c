@@ -6,7 +6,7 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 17:39:26 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/14 14:06:09 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/04/25 13:44:36 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,22 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	int		length;
 	int		i;
-	char	*str;
+	char	*dest;
 
 	if (!s || !f)
 		return (NULL);
 	length = ft_strlen(s);
-	str = (char *)malloc(sizeof(char) * (length + 1));
-	if (!str)
+	dest = (char *)malloc(sizeof(char) * (length + 1));
+	if (!dest)
 		return (NULL);
 	i = 0;
 	while (i < length)
 	{
-		str[i] = f(i, s[i]);
+		dest[i] = f(i, s[i]);
 		i++;
 	}
-	str[i] = '\0';
-	return (str);
+	dest[i] = '\0';
+	return (dest);
 }
 /*
 size_t	ft_strlen(const char *str)

@@ -6,11 +6,12 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 15:39:01 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/04/14 17:20:23 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/04/25 13:42:45 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
 static int	ft_total_strings(char const *s, char c)
 {
@@ -33,7 +34,7 @@ static int	ft_total_strings(char const *s, char c)
 	return (count);
 }
 
-static int	ft_sep_len(char const *s, char c)
+static int	ft_word_length(char const *s, char c)
 {
 	int	i;
 
@@ -50,7 +51,7 @@ static char	*ft_word(char const *s, char c)
 	char	*word;
 
 	i = 0;
-	len_word = ft_sep_len(s, c);
+	len_word = ft_word_length(s, c);
 	word = (char *)malloc(sizeof(char) * (len_word + 1));
 	if (!word)
 		return (NULL);
@@ -89,7 +90,7 @@ char	**ft_split(char const *s, char c)
 			strings[i] = ft_word(s, c);
 			if (strings[i++] == NULL)
 				return (ft_free_memory(strings, i));
-			s = s + ft_sep_len(s, c);
+			s = s + ft_word_length(s, c);
 		}
 		if (*s)
 			s++;
@@ -106,8 +107,8 @@ int	main(void)
 	char	delim;
 
 	i = 0;
-	str = "   Hello, this is a test   string for ft_split!  ";
-	delim = ' ';
+	str = "***Eu***GostoMuitoDeGelado***";
+	delim = '*';
 
 	words = ft_split(str, delim);
 	if (!words)
@@ -120,10 +121,10 @@ int	main(void)
 	while (words[i])
 	{
 		printf("Word[%d]: \"%s\"\n", i, words[i]);
-		free(words[i]); // Libera cada palavra individualmente
+		free(words[i]);
 		i++;
 	}
-	free(words); // Libera o array de ponteiros
+	free(words);
 	return (0);
 }
 */
